@@ -2301,7 +2301,7 @@ p, ul, ol {
   }
 }
 
-@media screen and (min-width: 45em) {
+@media screen and (min-width: 53em) {
   /* line 301, ../_sass/main.scss */
   .section__inner__article-offset, .section__inner__article {
     padding-left: 7.4em;

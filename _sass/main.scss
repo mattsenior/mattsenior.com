@@ -299,7 +299,7 @@ p, ul, ol {
 }
 
 .section__inner__article-offset {
-    @include respond-min-width(45em) {
+    @include respond-min-width(53em) {
         padding-left: 7.4em;
     }
 }
