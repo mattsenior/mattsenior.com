@@ -15,13 +15,13 @@
 
     <title>Senior.io | Webontwikkeling | Matt Senior</title>
 
-    <script src="{{ site.url }}/js/modernizr.js"></script>
+    <script src="{{ site.baseurl }}/js/modernizr.js"></script>
 
     <!--[if (gt IE 8) | (IEMobile)]><!-->
-    <link rel="stylesheet" href="{{ site.url }}/css/main.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
     <!--<![endif]-->
     <!--[if (lt IE 9) & (!IEMobile)]>
-    <link rel="stylesheet" href="{{ site.url }}css/main-lt-ie9.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}css/main-lt-ie9.css">
     <![endif]-->
 
     <!--
@@ -54,8 +54,8 @@
         Modernizr.load([
             {
                 load: [
-                    '{{ site.url }}/js/jquery-1.9.0.min.js',
-                    '{{ site.url }}/js/main.js'
+                    '{{ site.baseurl }}/js/jquery-1.9.0.min.js',
+                    '{{ site.baseurl }}/js/main.js'
                 ],
                 complete: function()
                 {
