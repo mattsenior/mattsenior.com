@@ -353,6 +353,10 @@ p, ul, ol {
     h2 {
         font-style: italic;
     }
+
+    @include respond-max-width(21em) {
+        @include adjust-font-size-to(23px);
+    }
 }
 
 .banner--inverted__name {

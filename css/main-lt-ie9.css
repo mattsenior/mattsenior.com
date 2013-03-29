@@ -1336,56 +1336,56 @@ p, ul, ol {
   font-style: italic;
 }
 
-/* line 361, ../_sass/main.scss */
+/* line 365, ../_sass/main.scss */
 .banner--inverted__name h1, .banner--inverted__name h2 {
   color: #fcfcfc;
 }
 
-/* line 366, ../_sass/main.scss */
+/* line 370, ../_sass/main.scss */
 .banner__icon {
   position: relative;
   top: 0.145em;
 }
 
-/* line 373, ../_sass/main.scss */
+/* line 377, ../_sass/main.scss */
 #nav {
   display: none;
   position: absolute;
   top: 0;
   padding-top: 84px;
 }
-/* line 382, ../_sass/main.scss */
+/* line 386, ../_sass/main.scss */
 #nav:not(:target) {
   z-index: 1;
   height: 0;
 }
-/* line 388, ../_sass/main.scss */
+/* line 392, ../_sass/main.scss */
 #nav:target .nav__close {
   display: block;
 }
 
-/* line 399, ../_sass/main.scss */
+/* line 403, ../_sass/main.scss */
 .nav__item {
   position: absolute;
 }
 
-/* line 422, ../_sass/main.scss */
+/* line 426, ../_sass/main.scss */
 .nav__item {
   position: relative;
   border-top: 1px solid;
 }
 
-/* line 429, ../_sass/main.scss */
+/* line 433, ../_sass/main.scss */
 .nav__burger {
   display: none;
 }
 
-/* line 434, ../_sass/main.scss */
+/* line 438, ../_sass/main.scss */
 .colour--feature {
   color: #ffe500;
 }
 
-/* line 438, ../_sass/main.scss */
+/* line 442, ../_sass/main.scss */
 .article--columns {
   -webkit-column-count: 2;
   -moz-column-count: 2;
@@ -1398,7 +1398,7 @@ p, ul, ol {
   -o-column-gap: 3.4em;
   column-gap: 3.4em;
 }
-/* line 444, ../_sass/main.scss */
+/* line 448, ../_sass/main.scss */
 .article--columns.prose *:last-child, .article--columns .prose *:last-child {
   margin-bottom: 0;
 }
