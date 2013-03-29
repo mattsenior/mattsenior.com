@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html lang="en" class="lt-ie10 lt-ie9 lt-ie8 no-js"> <![endif]-->
+<!--[if IE 8]> <html lang="en" class="lt-ie10 lt-ie9 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="lt-ie10 no-js"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <!--
+
+    Copyright © Matt Senior | http://mattsenior.com/
+
+    -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+    <title>Senior.io | Webontwikkeling | Matt Senior</title>
+
+    <script src="/js/modernizr.js"></script>
+
+    <!--[if (gt IE 8) | (IEMobile)]><!-->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--<![endif]-->
+    <!--[if (lt IE 9) & (!IEMobile)]>
+    <link rel="stylesheet" href="css/main-lt-ie9.css">
+    <![endif]-->
+
+    <!--
+    <link rel="apple-touch-icon" href="img/meta/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="img/meta/favicon.png">
+    <meta name="msapplication-TileImage" content="img/meta/ms-tile.png">
+    <meta name="msapplication-TileColor" content="#ad52cc">
+    <meta property="og:title" content="Responsive Navigation">
+    <meta property="og:description" content="Responsive Navigation">
+    <meta property="og:image" content="img/meta/og-image.png">
+    -->
+</head>
+
+<body>
+    <div id="outer-wrap">
+        <div id="inner-wrap">
+
+            {{ content }}
+
+        </div>
+    </div>
+
+    <script>
+        /*!
+         *
+         *  Copyright © Matt Senior | http://mattsenior.com/
+         *
+         */
+
+        Modernizr.load([
+            {
+                load: [
+                    'js/jquery-1.9.0.min.js',
+                    'js/main.js'
+                ],
+                complete: function()
+                {
+                    $.fn.ready(function()
+                    {
+                        window.MJS.init();
+                    });
+
+                }
+            }
+        ]);
+
+        WebFontConfig = {
+            google:  {families: [
+                'Gentium+Book+Basic:400,400italic:latin',
+                //'Gentium+Book+Basic:400,400italic,700,700italic:latin',
+                'Lato:400,400italic,900,900italic:latin'
+            ]}//,
+            //typekit: {
+            //    id: 'uid4wuu'
+            //}
+        };
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
+</body>
+</html>
