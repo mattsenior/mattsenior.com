@@ -70,6 +70,8 @@ $font-family-monospace: Monaco, monospace;
 
 $font-family-body: $font-family-sans-serif;
 
+$font-boss-line-height: 1em;
+
 body {
     background-color: $colour-background;
     color: $colour-body;
@@ -89,8 +91,12 @@ body {
         font-size: 1em;  // Bump up font size?
     }
 
-    @include respond-min-width(90em) {
+    @include respond-min-width(70em) {
         font-size: 1.06em;
+    }
+
+    @include respond-min-width(90em) {
+        font-size: 1.16em;
     }
 }
 
@@ -197,7 +203,7 @@ p, ul, ol {
 
 .prose--boss {
     @include adjust-font-size-to(48px);
-    line-height: 0.95238em; // Force regardless of rhythm
+    line-height: $font-boss-line-height; // Force regardless of rhythm
     font-family: $font-family-sans-serif;
     font-weight: 900;
     font-style: italic;
@@ -211,10 +217,17 @@ p, ul, ol {
 
     @include respond-min-width(40em) {
         @include adjust-font-size-to(56px);//, 7/4);
+        line-height: $font-boss-line-height; // Force regardless of rhythm
     }
 
     @include respond-min-width(70em) {
+        @include adjust-font-size-to(70px);//, 8/3);
+        line-height: $font-boss-line-height; // Force regardless of rhythm
+    }
+
+    @include respond-min-width(80em) {
         @include adjust-font-size-to(84px);//, 8/3);
+        line-height: $font-boss-line-height; // Force regardless of rhythm
 
         p, h1, h2, h3, h4, h5, h6 {
             @include rhythm(2, 0, 0, 2, 84px);
