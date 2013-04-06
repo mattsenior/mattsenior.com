@@ -1,0 +1,86 @@
+/*------------------------------------*\
+    VARS.SCSS
+\*------------------------------------*/
+/**
+ * Any variables you find set in inuit.css’ `_vars.scss` that you do not wish to
+ * keep, simply redefine here. This means that if inuit.css, for example, sets
+ * your `$base-font-size` at 16px and you wish it to be 14px, simply redeclare
+ * that variable in this file. inuit.css ignores its own variables in favour of
+ * using your own, so you can completely modify how inuit.css works without ever
+ * having to alter the framework itself.
+ */
+
+
+
+
+
+/*------------------------------------*\
+    $OBJECTS-AND-ABSTRACTIONS
+\*------------------------------------*/
+/**
+ * All of inuit.css’ objects and abstractions are initially turned off by
+ * default. This means that you start any project with as little as possible,
+ * and introducing objects and abstractions is as simple as switching the
+ * following variables to `true`.
+ */
+$use-grids:         true;
+$use-flexbox:       false;
+$use-columns:       false;
+$use-nav:           false;
+$use-options:       false;
+$use-pagination:    false;
+$use-breadcrumb:    false;
+$use-media:         false;
+$use-marginalia:    false;
+$use-island:        true;
+$use-block-list:    false;
+$use-matrix:        false;
+$use-split:         false;
+$use-this-or-this:  false;
+$use-link-complex:  false;
+$use-flyout:        false;
+$use-arrows:        false;
+$use-sprite:        false;
+$use-icon-text:     false;
+$use-beautons:      false;
+$use-lozenges:      false;
+$use-rules:         true;
+$use-stats:         false;
+$use-greybox:       true;
+
+
+
+/*------------------------------------*\
+    $CUSTOM
+\*------------------------------------*/
+/**
+ * Place any of your own variables that sit on top of inuit.css here.
+ */
+$colour-def-almost-white: #fcfcfc;
+$colour-def-darker-grey: #333;
+$colour-def-boss-yellow: #ffe500;
+$colour-def-body-grey: lighten(black, 24%);
+
+$base-font-colour: $colour-def-body-grey;
+$colour-link: darken($base-font-colour, 40%);
+$colour-background: $colour-def-almost-white;
+$colour-meta: lighten($base-font-colour, 60);
+
+
+/*------------------------------------*\
+    $OVERRIDES
+\*------------------------------------*/
+/**
+ * Place any variables that should override inuit.css’ defaults here.
+ */
+$debug-mode: false;
+
+$base-font-size:    23px!default;
+$base-line-height:  36px!default;
+
+$base-font-family: "Gentium Book Basic", Georgia, serif;
+
+$base-ui-color:     lighten($base-font-colour, 70%);
+
+$brand-color: $colour-def-boss-yellow;
+$brand-face: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;

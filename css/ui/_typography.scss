@@ -1,0 +1,33 @@
+/*------------------------------------*\
+    Typography
+\*------------------------------------*/
+body {
+    background: $colour-background;
+    color: $base-font-colour;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+}
+
+.prose {
+    a:link, a:visited, a:hover, a:active, {
+        color: $colour-link;
+        text-decoration: none;
+        border-bottom: 0.1em solid $brand-color;
+    }
+    a:hover {
+        background-color: lighten($brand-color, 40%);
+    }
+    a:active {
+        background-color: $brand-color;
+        color: $colour-background;
+    }
+}
+
+.typography--boss {
+    @extend .mega;
+    @extend .brand;
+    font-weight: 900;
+    font-style: italic;
+}

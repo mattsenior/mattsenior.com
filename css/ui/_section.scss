@@ -1,0 +1,28 @@
+/*------------------------------------*\
+    Section
+\*------------------------------------*/
+.section {
+    padding-top: 2 * $base-spacing-unit;
+    padding-bottom: 2 * $base-spacing-unit;
+}
+
+.section--feature {
+    background-color: $colour-def-darker-grey;
+    -webkit-font-smoothing: antialiased;
+}
+
+%section--background-image {
+    background-size: cover;
+}
+
+.section--gracht {
+    @extend %section--background-image;
+    background-image: url(../img/gracht.jpg);
+    background-position: center 40%;
+}
+
+    .section__inner {
+        max-width: 66 * $base-spacing-unit;
+        margin-left: auto;
+        margin-right: auto;
+    }

@@ -1,36 +1,91 @@
----
-layout: base
----
-<header id="top" role="banner" class="section__inner">
-    <a itemprop="url" href="http://senior.io">
-        <hgroup class="banner__name">
-            <h1>Senior<span class="colour--feature">.</span>io</h1>
-            <i class="banner__icon icon colour--feature icon--flow-line"></i>
-            <h2>Webontwikkeling</h2>
-        </hgroup>
-    </a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
     
-    <a class="nav__burger" href="#nav">Navigation</a>
-</header>
+    <title>{{ page.title }}</title>
+    
+    <link rel="stylesheet" href="{{ site.root }}css/style.min.css">
+</head>
+<body>
 
-<nav id="nav" role="navigation" class="nav">
-    <h2>Navigation</a>
-    <ol class="nav__list">
-        <li class="nav__item"><a href="#">Home</a></li>
-        <li class="nav__item"><a href="#">Blog</a></li>
-        <li class="nav__item"><a href="#">About</a></li>
-        <li class="nav__item"><a href="#">Labs</a></li>
-        <li class="nav__item"><a href="#">Contact</a></li>
-    </ol>
-    <a class="nav__close" href="#top">Return to content</a>
-</nav>
-
-{{ content }}
-
-<section class="section section--inverted-feature section--no-margin">
-    <div class="section__inner">
-        <div class="prose prose--boss prose--inverted-feature">
-            <p>Groetjes uit Londen</p>
+    <header role="banner" class="header header--absolute header--inverted">
+        <div class="section__inner">
+            <div class="grid">
+                <a href="#">
+                    <div class="grid__item one-sixth">
+                        <div class="header__brand">
+                            <h1 class="header__content">Senior<span class="brand-colour">.</span>io</h1>
+                            <i class="header__icon brand-colour icon icon--flow-line"></i>
+                        </div>
+                    </div><!--
+                 --><div class="grid__item five-sixths">
+                        <h2 class="header__content header__content--secondary">Webontwikkeling</h2>
+                    </div>
+                </a>
+            </div>
         </div>
-    </div>
-</section>
+    </header>
+
+    <article>
+        <div class="section section--feature section--gracht header--absolute__next-sibling">
+            <div class="section__inner">
+                <div class="grid">
+                    <div class="grid__item one-sixth">
+                    </div><!--
+                 --><div class="grid__item five-sixths">
+                        <h1 class="typography--boss">{{ page.title }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section__inner">
+                <div class="grid">
+                    <div class="grid__item one-sixth">
+                    </div><!--
+                 --><div class="grid__item two-sixths">
+                        <div class="prose">
+                            <p class="lede">By default, containers are marked up as a <code>&lt;div&gt;</code> element with <em>no class</em> attached (see the small label in the top-left?). This means that a container like this one will <a href="/article">inherit its style from the body</a> of the document. Something else really should go here to make sure we end up on another line.</p>
+
+                            <p>Using containers without classes added is a <strong>great way to test the same styles</strong> across many pieces of different content on your canvas.<p>
+
+                            <hr>
+
+                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical <a href="#">Latin literature</a> from 45 BC, making it over 2000 years old.</p>
+
+                            <p>The 11-year-old, trained by Sue Smith and ridden by Ryan Mania, jumped superbly as 17 of the 40 runners finished the race. Cappa Bleu (12-1) was second, Teaforthree (10-1) third and 2011 runner-up Oscar Time (66-1) fourth, ahead of Rare Bob (16-1). Seabass was sent off the 11-2 favourite, as jockey Katie Walsh sought to become the first female rider to win the famous steeplechase.</p>
+
+                            <hr>
+
+                            <p>Using containers without classes added is a great way to test the same styles across many pieces of different content on your canvas.<p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <script>
+        WebFontConfig = {
+            google:  {families: [
+                //'Gentium+Book+Basic:400,400italic:latin',
+                'Gentium+Book+Basic:400,400italic,700,700italic:latin',
+                //'Lato:400,400italic,900,900italic:latin'
+                'Lato:900italic:latin'
+            ]}
+        };
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
+</body>
+</html>

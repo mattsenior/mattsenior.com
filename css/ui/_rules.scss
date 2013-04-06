@@ -1,0 +1,17 @@
+hr {
+    @extend .rule;
+
+}
+
+.rule--ornament {
+    @extend .rule--ornament;
+
+    &:after {
+        @extend .icon;
+        @extend .delta;
+        color: $colour-meta;
+        -webkit-font-smoothing: antialiased;
+        line-height: 0!important;
+        content: "\e004";
+    }
+}
