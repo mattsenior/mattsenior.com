@@ -8,26 +8,57 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
+    font-family: $brand-face;
+    font-style: italic;
 }
 
-.prose {
-    a:link, a:visited, a:hover, a:active, {
-        color: $colour-link;
-        text-decoration: none;
-        border-bottom: 0.1em solid $brand-color;
-    }
-    a:hover {
-        background-color: lighten($brand-color, 40%);
-    }
-    a:active {
-        background-color: $brand-color;
+a:link, a:visited, a:hover, a:active, {
+    color: $colour-link;
+    text-decoration: none;
+    border-bottom: 0.1em solid $brand-color;
+}
+a:hover {
+    background-color: lighten($brand-color, 40%);
+}
+a:active {
+    background-color: $brand-color;
+    color: $colour-background;
+}
+
+%typography--feature-links {
+    &:link, &:visited {
         color: $colour-background;
+    }
+
+    &:hover, &:active {
+        color: $brand-color;
+    }
+}
+%typography--reset-links {
+    &:link, &:visited, &:hover, &:active {
+        border-bottom: 0;
+        background: none;
     }
 }
 
 .typography--boss {
-    @extend .mega;
-    @extend .brand;
+    @extend .giga;
+    letter-spacing: -0.02em;
+    line-height: 1.02;
+    @extend .brand-face;
     font-weight: 900;
     font-style: italic;
+}
+
+code {
+    font-family: $font-family-monospace;
+    font-size: 0.8em;
+    background-color: darken($colour-background, 2%);
+}
+
+p code {
+    display: inline;
+    padding: 0.20em 0.4em 0.20em;
+    margin: 0 0.2em;
+    border: 0.1em solid darken($colour-background, 3%);
 }

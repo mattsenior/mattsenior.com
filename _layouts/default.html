@@ -13,17 +13,19 @@
     <header role="banner" class="header header--absolute header--inverted">
         <div class="section__inner">
             <div class="grid">
-                <a href="#">
                     <div class="grid__item one-sixth">
+                <a href="#">
                         <div class="header__brand">
                             <h1 class="header__content">Senior<span class="brand-colour">.</span>io</h1>
                             <i class="header__icon brand-colour icon icon--flow-line"></i>
                         </div>
+                </a>
                     </div><!--
                  --><div class="grid__item five-sixths">
+                <a href="#">
                         <h2 class="header__content header__content--secondary">Webontwikkeling</h2>
-                    </div>
                 </a>
+                    </div>
             </div>
         </div>
     </header>
@@ -34,7 +36,7 @@
                 <div class="grid">
                     <div class="grid__item one-sixth">
                     </div><!--
-                 --><div class="grid__item five-sixths">
+                 --><div class="grid__item four-sixths">
                         <h1 class="typography--boss">{{ page.title }}</h1>
                     </div>
                 </div>
@@ -47,26 +49,26 @@
                     <div class="grid__item one-sixth">
                     </div><!--
                  --><div class="grid__item two-sixths">
-                        <div class="prose">
-                            <p class="lede">By default, containers are marked up as a <code>&lt;div&gt;</code> element with <em>no class</em> attached (see the small label in the top-left?). This means that a container like this one will <a href="/article">inherit its style from the body</a> of the document. Something else really should go here to make sure we end up on another line.</p>
-
-                            <p>Using containers without classes added is a <strong>great way to test the same styles</strong> across many pieces of different content on your canvas.<p>
-
-                            <hr>
-
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical <a href="#">Latin literature</a> from 45 BC, making it over 2000 years old.</p>
-
-                            <p>The 11-year-old, trained by Sue Smith and ridden by Ryan Mania, jumped superbly as 17 of the 40 runners finished the race. Cappa Bleu (12-1) was second, Teaforthree (10-1) third and 2011 runner-up Oscar Time (66-1) fourth, ahead of Rare Bob (16-1). Seabass was sent off the 11-2 favourite, as jockey Katie Walsh sought to become the first female rider to win the famous steeplechase.</p>
-
-                            <hr>
-
-                            <p>Using containers without classes added is a great way to test the same styles across many pieces of different content on your canvas.<p>
-                        </div>
+                        <h1 class="typography--boss brand-colour">{{ page.title }}</h1>
+                        <hr>
+                        {{ content }}
                     </div>
                 </div>
             </div>
         </div>
     </article>
+
+    <div class="section section--inverted-feature">
+        <div class="section__inner">
+            <div class="grid">
+                <div class="grid__item one-sixth">
+                </div><!--
+             --><div class="grid__item four-sixths">
+                    <h1 class="typography--boss">A Complex Arrangement of Mirrors</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         WebFontConfig = {

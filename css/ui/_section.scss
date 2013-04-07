@@ -2,12 +2,17 @@
     Section
 \*------------------------------------*/
 .section {
-    padding-top: 2 * $base-spacing-unit;
-    padding-bottom: 2 * $base-spacing-unit;
+    padding-top: 3 * $base-spacing-unit;
+    padding-bottom: 3 * $base-spacing-unit;
 }
-
 .section--feature {
     background-color: $colour-def-darker-grey;
+    color: $brand-color;
+    -webkit-font-smoothing: antialiased;
+}
+.section--inverted-feature {
+    background-color: $brand-color;
+    color: $colour-background;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -22,7 +27,7 @@
 }
 
     .section__inner {
-        max-width: 66 * $base-spacing-unit;
+        max-width: 60 * $base-spacing-unit;
         margin-left: auto;
         margin-right: auto;
     }

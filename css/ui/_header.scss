@@ -7,6 +7,11 @@
 .header--inverted {
     color: $colour-background;
     -webkit-font-smoothing: antialiased;
+
+    a {
+        @extend %typography--reset-links;
+        @extend %typography--feature-links;
+    }
 }
 
     .header__brand {
@@ -14,8 +19,10 @@
     }
 
     .header__content {
-        @include font-size($base-font-size * 1.125);
+        @extend .beta;
         display: inline;
+        font-family: $base-font-family;
+        font-style: normal;
     }
     .header__content--secondary {
         font-style: italic;
@@ -30,10 +37,10 @@
 
 .header--absolute {
     position: absolute;
-    top: 2 * $base-spacing-unit;
+    top: 3 * $base-spacing-unit;
     width: 100%;
 }
 
     .header--absolute__next-sibling {
-        padding-top: 5 * $base-spacing-unit;
+        padding-top: 7 * $base-spacing-unit;
     }
