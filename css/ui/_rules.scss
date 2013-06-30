@@ -14,3 +14,24 @@ hr {
         content: "\e004";
     }
 }
+
+.rule--not-hr {
+    @extend .rule;
+}
+
+.rule--with-text {
+    @extend .rule--not-hr;
+    border-color: $base-ui-color;
+    text-align: center;
+}
+
+.rule__text {
+    //position: relative;
+    //display: block;
+    //width: auto;
+    //margin: 0 auto;
+    padding: 0 1em;
+    background-color: $colour-background;
+    position: relative;
+    bottom: -0.9em;
+}

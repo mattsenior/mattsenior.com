@@ -33,7 +33,7 @@ $use-breadcrumb:    false;
 $use-media:         false;
 $use-marginalia:    false;
 $use-island:        true;
-$use-block-list:    false;
+$use-block-list:    true;
 $use-matrix:        false;
 $use-split:         false;
 $use-this-or-this:  false;
@@ -58,18 +58,23 @@ $use-greybox:       true;
  */
 $colour-def-almost-white: #fcfcfc;
 $colour-def-darker-grey: #333;
-$colour-def-body-grey: lighten(black, 24%);
+$colour-def-body-grey: lighten(black, 28%);
 
 $colour-def-boss-yellow: #ffe500;
 $colour-def-enraged-salmon:#DE2C42;
 $colour-def-hot-pants: #DE0949;
 $colour-def-luminous-teal: #0CD6D0;
 $colour-def-superlime: #CCFF00;
+$colour-def-greyblue: #526875;
+$colour-def-greyblue: #384e5c;
+$colour-def-oranje: #ff7000;
 
 $base-font-colour: $colour-def-body-grey;
-$colour-link: darken($base-font-colour, 40%);
+$colour-link: $colour-def-oranje;
 $colour-background: $colour-def-almost-white;
 $colour-meta: lighten($base-font-colour, 60);
+$colour-header: $colour-def-greyblue;
+
 
 $font-family-monospace: Monaco, monospace;
 
@@ -81,18 +86,20 @@ $font-family-monospace: Monaco, monospace;
  * Place any variables that should override inuit.css’ defaults here.
  */
 $debug-mode: false;
+$responsive: false;
 
-$base-font-size:    23px!default;
+$base-font-size:    22px!default;
 $base-line-height:  36px!default;
 
 $base-font-family: "Gentium Book Basic", Georgia, serif;
 
-$base-ui-color:     lighten($base-font-colour, 70%);
+$base-ui-color:     lighten(black, 95%);
 
-$brand-color: $colour-def-boss-yellow;
+//$brand-color: $colour-def-boss-yellow;
 //$brand-color: $colour-def-enraged-salmon;
 //$brand-color: $colour-def-hot-pants;
 //$brand-color: $colour-def-luminous-teal;
 //$brand-color: $colour-def-superlime;
+$brand-color: $colour-def-oranje;
 
 $brand-face: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;

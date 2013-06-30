@@ -15,20 +15,34 @@
     color: $colour-background;
     -webkit-font-smoothing: antialiased;
 }
-
-%section--background-image {
-    background-size: cover;
-}
-
-.section--gracht {
-    @extend %section--background-image;
-    background-image: url(../img/gracht.jpg);
-    background-position: center 40%;
-}
-
     .section__inner {
         max-width: 60 * $base-spacing-unit;
         margin-left: auto;
         margin-right: auto;
-        padding: 0 $base-spacing-unit;
+        padding: 0 0.8 * $base-spacing-unit;
+
+        @include respond-min-width(10 * $base-spacing-unit) {
+            padding-left:  1 * $base-spacing-unit;
+            padding-right: 1 * $base-spacing-unit;
+        };
+
+        @include respond-min-width(20 * $base-spacing-unit) {
+            padding-left:  1.5 * $base-spacing-unit;
+            padding-right: 1.5 * $base-spacing-unit;
+        };
+
+        @include respond-min-width(28 * $base-spacing-unit) {
+            padding-left:  2 * $base-spacing-unit;
+            padding-right: 2 * $base-spacing-unit;
+        };
+    }
+    .section__inner--mid-width {
+        max-width: 34 * $base-spacing-unit;
+    }
+    .section__inner--readable {
+        max-width: 20 * $base-spacing-unit;
+
+        @include respond-min-width(28 * $base-spacing-unit) {
+            max-width: 21 * $base-spacing-unit;
+        };
     }

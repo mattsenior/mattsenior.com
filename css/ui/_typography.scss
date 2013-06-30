@@ -7,21 +7,21 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 400;
+    font-weight: 900;
     font-family: $brand-face;
+    color: $colour-header;
     font-style: italic;
 }
 
 a:link, a:visited, a:hover, a:active, {
-    color: $colour-link;
     text-decoration: none;
-    border-bottom: 0.1em solid $brand-color;
+    color: $colour-link;
 }
 a:hover {
-    background-color: lighten($brand-color, 40%);
+    background-color: lighten($colour-link, 40%);
 }
 a:active {
-    background-color: $brand-color;
+    background-color: $colour-link;
     color: $colour-background;
 }
 
@@ -48,6 +48,11 @@ a:active {
     @extend .brand-face;
     font-weight: 900;
     font-style: italic;
+}
+
+.typography--meta {
+    color: lighten($base-font-colour, 30%);
+    font-size: 0.9em;
 }
 
 code {

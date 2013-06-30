@@ -2,45 +2,21 @@
     Header
 \*------------------------------------*/
 .header {
-    text-transform: lowercase;
-}
-.header--inverted {
-    color: $colour-background;
-    -webkit-font-smoothing: antialiased;
+    background-color: white;
+    padding-top:    0.8 * $base-spacing-unit;
+    padding-bottom: 0.8 * $base-spacing-unit;
 
     a {
         @extend %typography--reset-links;
-        @extend %typography--feature-links;
     }
 }
-
-    .header__brand {
-        text-align: right;
-    }
-
-    .header__content {
-        @extend .beta;
-        display: inline;
-        font-family: $base-font-family;
-        font-style: normal;
-    }
-    .header__content--secondary {
-        font-style: italic;
-    }
-
-    .header__icon {
-        position: relative;
-        top: 0.145em;
-        margin-right: -0.8 * $base-spacing-unit;
-    }
-
-
-.header--absolute {
-    position: absolute;
-    top: 3 * $base-spacing-unit;
-    width: 100%;
+.header--inverted {
+    color: $colour-background;
 }
-
-    .header--absolute__next-sibling {
-        padding-top: 7 * $base-spacing-unit;
+    h1.header__brand {
+        @extend h2;
+        margin-bottom: 0.1 * $base-spacing-unit;
+    }
+    .header__dot {
+        margin-left: -0.1em;
     }

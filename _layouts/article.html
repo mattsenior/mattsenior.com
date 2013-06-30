@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include head.html %}
+
+    <body>
+        {% include header.html %}
+
+        <article>
+            <div class="section">
+                <div class="section__inner section__inner--mid-width">
+                    <h1 class="article__title">{{ page.title }}</h1>
+                </div>
+
+                <div class="section__inner section__inner--readable">
+                    <div class="article__meta rule--with-text">
+                        <time class="rule__text article__meta__date" datetime="{{ page.date }}">{{ page.date | date: "%a" }}, {{ page.date | date_to_string }}</time>
+                    </div>
+
+                    {{ content }}
+                </div>
+            </div>
+        </article>
+
+        {% include scripts.html %}
+    </body>
+</html>
