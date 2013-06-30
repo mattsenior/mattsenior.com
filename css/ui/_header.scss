@@ -3,8 +3,10 @@
 \*------------------------------------*/
 .header {
     background-color: white;
-    padding-top:    0.8 * $base-spacing-unit;
-    padding-bottom: 0.8 * $base-spacing-unit;
+    padding-top:    1 * $base-spacing-unit;
+    padding-bottom: 1 * $base-spacing-unit;
+    text-transform: lowercase;
+    text-align: center;
 
     a {
         @extend %typography--reset-links;
@@ -13,10 +15,29 @@
 .header--inverted {
     color: $colour-background;
 }
-    h1.header__brand {
-        @extend h2;
+    .header__brand {
         margin-bottom: 0.1 * $base-spacing-unit;
+
+        h1, h2 {
+            font-family: $base-font-family;
+            font-style: normal;
+            font-weight: 400;
+            @extend .lede; 
+            display: inline;
+            color: $base-font-colour;
+            letter-spacing: 0.04em;
+        }
+
+        h2 {
+            font-style: italic;
+        }
     }
     .header__dot {
+        @extend .brand-color;
         margin-left: -0.1em;
+    }
+    .header__icon {
+        font-size: 1.1em;
+        position: relative;
+        top: 0.15em;
     }
