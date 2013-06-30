@@ -1,0 +1,22 @@
+/*
+Errno::ENOENT: No such file or directory - style.scss
+
+Backtrace:
+/Users/mjs/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/lib/sass/plugin/compiler.rb:339:in `read'
+/Users/mjs/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/lib/sass/plugin/compiler.rb:339:in `update_stylesheet'
+/Users/mjs/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+/Users/mjs/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/lib/sass/plugin/compiler.rb:201:in `each'
+/Users/mjs/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+/Users/mjs/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/lib/sass/plugin/compiler.rb:299:in `block in watch'
+/Users/mjs/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/vendor/listen/lib/listen/multi_listener.rb:108:in `call'
+/Users/mjs/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/vendor/listen/lib/listen/multi_listener.rb:108:in `on_change'
+/Users/mjs/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/vendor/listen/lib/listen/multi_listener.rb:117:in `block in initialize_adapter'
+/Users/mjs/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/vendor/listen/lib/listen/adapter.rb:198:in `call'
+/Users/mjs/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/vendor/listen/lib/listen/adapter.rb:198:in `report_changes'
+/Users/mjs/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/vendor/listen/lib/listen/adapter.rb:210:in `poll_changed_dirs'
+/Users/mjs/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.7/vendor/listen/lib/listen/adapters/darwin.rb:38:in `block in start'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Errno::ENOENT: No such file or directory - style.scss"; }
