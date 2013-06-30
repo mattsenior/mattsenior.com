@@ -1,0 +1,27 @@
+/*------------------------------------*\
+    Article List
+\*------------------------------------*/
+.article-list {
+    @extend .block-list;
+    border: 0;
+
+    > li {
+        padding: (1 * $base-spacing-unit) 0;
+    }
+}
+    .article-list__item {
+        @include arrow(right, center, $brand-color);
+    }
+
+    .article-list__title {
+        margin-bottom: $half-spacing-unit;
+    }
+
+    .article-list__meta {
+        display: inline;
+        margin-right: 0.4em;
+    }
+
+    .article-list__snippet {
+        display: inline;
+    }

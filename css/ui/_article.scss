@@ -1,0 +1,12 @@
+/*------------------------------------*\
+    Articles
+\*------------------------------------*/
+.article__title {
+    @extend .typography--boss;
+    @extend .brand-colour;
+    text-align: center;
+}
+.article__meta {
+    @extend .typography--meta;
+    margin-bottom: 2 * $base-spacing-unit;
+}

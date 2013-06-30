@@ -1,60 +1,26 @@
----
-layout: base
----
-<header id="top" role="banner" class="banner--absolute">
-    <div class="section__inner">
-        <a itemprop="url" href="http://senior.io">
-            <hgroup class="banner--inverted__name">
-                <h1>Senior<span class="colour--feature">.</span>io</h1>
-                <i class="banner__icon icon colour--feature icon--flow-line"></i>
-                <h2>Webontwikkeling</h2>
-            </hgroup>
-        </a>
-        
-        <a class="nav__burger" href="#nav">Navigation</a>
-    </div>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+    {% include head.html %}
 
-<nav id="nav" role="navigation" class="nav">
-    <h2>Navigation</a>
-    <ol class="nav__list">
-        <li class="nav__item"><a href="#">Home</a></li>
-        <li class="nav__item"><a href="#">Blog</a></li>
-        <li class="nav__item"><a href="#">About</a></li>
-        <li class="nav__item"><a href="#">Labs</a></li>
-        <li class="nav__item"><a href="#">Contact</a></li>
-    </ol>
-    <a class="nav__close" href="#top">Return to content</a>
-</nav>
+    <body>
+        {% include header.html %}
 
-<article>
-    <div class="section section--feature section--no-margin section--gracht banner--absolute__next-sibling">
-        <div class="section__inner">
-            <div class="section__inner__article-offset">
-                <div class="prose--boss prose--feature">
-                    <h1>{{ page.title }}</h1>
+        <article>
+            <div class="section">
+                <div class="section__inner section__inner--mid-width">
+                    <h1 class="article__title">{{ page.title }}</h1>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="section">
-        <div class="section__inner">
-            <div class="section__inner__article">
-                <div class="prose">
+                <div class="section__inner section__inner--readable">
+                    <div class="article__meta rule--with-text">
+                        <time class="rule__text article__meta__date" datetime="{{ page.date }}">{{ page.date | date: "%a" }}, {{ page.date | date_to_string }}</time>
+                    </div>
+
                     {{ content }}
                 </div>
             </div>
-        </div>
-    </div>
-</article>
+        </article>
 
-<section class="section section--inverted-feature section--no-margin">
-    <div class="section__inner">
-        <div class="section__inner__article-offset">
-            <div class="prose--boss prose--inverted-feature">
-                <p>Groetjes uit Londen</p>
-            </div>
-        </div>
-    </div>
-</section>
+        {% include scripts.html %}
+    </body>
+</html>

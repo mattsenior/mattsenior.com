@@ -1,0 +1,105 @@
+/*------------------------------------*\
+    VARS.SCSS
+\*------------------------------------*/
+/**
+ * Any variables you find set in inuit.css’ `_vars.scss` that you do not wish to
+ * keep, simply redefine here. This means that if inuit.css, for example, sets
+ * your `$base-font-size` at 16px and you wish it to be 14px, simply redeclare
+ * that variable in this file. inuit.css ignores its own variables in favour of
+ * using your own, so you can completely modify how inuit.css works without ever
+ * having to alter the framework itself.
+ */
+
+
+
+
+
+/*------------------------------------*\
+    $OBJECTS-AND-ABSTRACTIONS
+\*------------------------------------*/
+/**
+ * All of inuit.css’ objects and abstractions are initially turned off by
+ * default. This means that you start any project with as little as possible,
+ * and introducing objects and abstractions is as simple as switching the
+ * following variables to `true`.
+ */
+$use-grids:         true;
+$use-flexbox:       false;
+$use-columns:       false;
+$use-nav:           false;
+$use-options:       false;
+$use-pagination:    false;
+$use-breadcrumb:    false;
+$use-media:         false;
+$use-marginalia:    false;
+$use-island:        true;
+$use-block-list:    true;
+$use-matrix:        false;
+$use-split:         false;
+$use-this-or-this:  false;
+$use-link-complex:  false;
+$use-flyout:        false;
+$use-arrows:        false;
+$use-sprite:        false;
+$use-icon-text:     false;
+$use-beautons:      false;
+$use-lozenges:      false;
+$use-rules:         true;
+$use-stats:         false;
+$use-greybox:       true;
+
+
+
+/*------------------------------------*\
+    $CUSTOM
+\*------------------------------------*/
+/**
+ * Place any of your own variables that sit on top of inuit.css here.
+ */
+$colour-def-almost-white: #fcfcfc;
+$colour-def-darker-grey: #333;
+$colour-def-body-grey: lighten(black, 28%);
+
+$colour-def-boss-yellow: #ffe500;
+$colour-def-enraged-salmon:#DE2C42;
+$colour-def-hot-pants: #DE0949;
+$colour-def-luminous-teal: #0CD6D0;
+$colour-def-superlime: #CCFF00;
+$colour-def-greyblue: #526875;
+$colour-def-greyblue: #384e5c;
+$colour-def-oranje: #ff7000;
+
+$base-font-colour: $colour-def-body-grey;
+$colour-link: $colour-def-oranje;
+$colour-background: $colour-def-almost-white;
+$colour-meta: lighten($base-font-colour, 60);
+$colour-header: $colour-def-greyblue;
+
+
+$font-family-monospace: Monaco, monospace;
+
+
+/*------------------------------------*\
+    $OVERRIDES
+\*------------------------------------*/
+/**
+ * Place any variables that should override inuit.css’ defaults here.
+ */
+$debug-mode: false;
+$responsive: false;
+
+$base-font-size:    22px!default;
+$base-line-height:  36px!default;
+
+$base-font-family: "Gentium Book Basic", Georgia, serif;
+
+$base-ui-color:     lighten(black, 95%);
+
+//$brand-color: $colour-def-boss-yellow;
+//$brand-color: $colour-def-enraged-salmon;
+//$brand-color: $colour-def-hot-pants;
+//$brand-color: $colour-def-luminous-teal;
+//$brand-color: $colour-def-superlime;
+$brand-color: $colour-def-oranje;
+
+$brand-face: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;

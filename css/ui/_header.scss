@@ -1,0 +1,22 @@
+/*------------------------------------*\
+    Header
+\*------------------------------------*/
+.header {
+    background-color: white;
+    padding-top:    0.8 * $base-spacing-unit;
+    padding-bottom: 0.8 * $base-spacing-unit;
+
+    a {
+        @extend %typography--reset-links;
+    }
+}
+.header--inverted {
+    color: $colour-background;
+}
+    h1.header__brand {
+        @extend h2;
+        margin-bottom: 0.1 * $base-spacing-unit;
+    }
+    .header__dot {
+        margin-left: -0.1em;
+    }
