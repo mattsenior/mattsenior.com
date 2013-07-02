@@ -6,22 +6,32 @@
     border: 0;
 
     > li {
-        padding: (1 * $base-spacing-unit) 0;
+        border: 0;
+        padding: (0.5 * $base-spacing-unit) 0;
     }
 }
-    .article-list__item {
-        @include arrow(right, center, $brand-color);
+    .article-list__title {
+        @extend %article__title;
+        margin-bottom: $half-spacing-unit;
+
+        @include font-size($h1-size, false);
+
+        @include respond-min-width(40em) {
+            @include font-size($kilo-size, false);
+        }
+
+        @include respond-min-width(60em) {
+            @include font-size($mega-size, false);
+        }
     }
 
-    .article-list__title {
-        margin-bottom: $half-spacing-unit;
+    .article-list__title-link {
+        display: block;
+        padding: 0.25 * $base-spacing-unit 0;
     }
 
     .article-list__meta {
-        display: inline;
-        margin-right: 0.4em;
-    }
-
-    .article-list__snippet {
-        display: inline;
+        @extend .article__meta;
+        margin-top: -0.5 * $base-spacing-unit;
+        margin-bottom: 0.5 * $base-spacing-unit;
     }

@@ -1,12 +1,34 @@
 /*------------------------------------*\
     Articles
 \*------------------------------------*/
-.article__title {
+%article__title {
     @extend .typography--boss;
-    @extend .brand-colour;
     text-align: center;
+}
+
+.article__title {
+    @extend %article__title;
+    text-align: center;
+    color: $brand-color;
+    @include font-size($kilo-size, false);
+
+    @include respond-min-width(40em) {
+        @include font-size($mega-size, false);
+    }
+
+    @include respond-min-width(60em) {
+        @include font-size($giga-size, false);
+    }
 }
 .article__meta {
     @extend .typography--meta;
-    margin-bottom: 2 * $base-spacing-unit;
+    margin-bottom: 1 * $base-spacing-unit;
+
+    @include respond-min-width(40em) {
+        margin-bottom: 1.5 * $base-spacing-unit;
+    }
+
+    @include respond-min-width(60em) {
+        margin-bottom: 2 * $base-spacing-unit;
+    }
 }

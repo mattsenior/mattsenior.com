@@ -6,22 +6,25 @@
         {% include header.html %}
 
         <section class="section">
-            <div class="section__inner section__inner--readable">
-                <ol class="article-list">
-                    {% for post in site.posts %}
-                        <li class="article-list__item">
-                            <a href="{{ post.url }}" class="article-list__link">
-                                <h2 class="article-list__title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
-                                    
-                                <time class="typography--meta article-list__meta" datetime="{{ post.date }}">{{ post.date | date: "%a" }}, {{ post.date | date_to_string }}</time>
-
-                                <p class="article-list__snippet">{{ post.snippet }}</p>
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ol>
-            </div>
-        </article>
+            <ol class="article-list">
+                {% for post in site.posts %}
+                    <li class="article-list__item">
+                        <article>
+                            <div class="section__inner section__inner--mid-width">
+                                <a class="article-list__title-link" href="{{ post.url | remove: '.html' }}">
+                                    <h1 class="article-list__title">{{ post.title }}</h1>
+                                </a>
+                            </div>
+                            <div class="section__inner section__inner--readable">
+                                <div class="article-list__meta rule--with-text">
+                                    <time class="rule__text article__meta__date" datetime="{{ post.date }}">{{ post.date | date: "%a" }}, {{ post.date | date_to_string }}</time>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                {% endfor %}
+            </ol>
+        </section>
 
         {% include scripts.html %}
     </body>

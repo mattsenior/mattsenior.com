@@ -2,8 +2,18 @@
     Section
 \*------------------------------------*/
 .section {
-    padding-top: 2 * $base-spacing-unit;
-    padding-bottom: 2 * $base-spacing-unit;
+    padding-top:    0.5 * $base-spacing-unit;
+    padding-bottom: 0.5 * $base-spacing-unit;
+
+    @include respond-min-width(40em) {
+        padding-top:    1.1 * $base-spacing-unit;
+        padding-bottom: 1.1 * $base-spacing-unit;
+    }
+
+    @include respond-min-width(60em) {
+        padding-top:    2 * $base-spacing-unit;
+        padding-bottom: 2 * $base-spacing-unit;
+    }
 }
 .section--feature {
     background-color: $colour-def-darker-grey;
