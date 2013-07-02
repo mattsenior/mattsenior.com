@@ -15,6 +15,10 @@
         padding-bottom: 2 * $base-spacing-unit;
     }
 }
+.section--main-wrapper {
+    padding: 0;
+    background-color: $colour-main-wrapper;
+}
 .section--feature {
     background-color: $colour-def-darker-grey;
     color: $brand-color;

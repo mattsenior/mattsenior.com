@@ -5,27 +5,29 @@
     <body>
         {% include header.html %}
 
-        <section class="section">
-            <ol class="article-list">
-                {% for post in site.posts %}
-                    <li class="article-list__item">
-                        <article>
-                            <div class="section__inner section__inner--mid-width">
-                                <a class="article-list__title-link" href="{{ post.url | remove: '.html' }}">
-                                    <h1 class="article-list__title">{{ post.title }}</h1>
-                                </a>
-                            </div>
-                            <div class="section__inner section__inner--readable">
-                                <div class="article-list__meta rule--with-text">
-                                    <time class="rule__text article__meta__date" datetime="{{ post.date }}">{{ post.date | date: "%a" }}, {{ post.date | date_to_string }}</time>
+        <div role="main" class="section--main-wrapper">
+            <section class="section">
+                <ol class="article-list">
+                    {% for post in site.posts %}
+                        <li class="article-list__item">
+                            <article>
+                                <div class="section__inner section__inner--mid-width">
+                                    <a class="article-list__title-link" href="{{ post.url | remove: '.html' }}">
+                                        <h1 class="article-list__title">{{ post.title }}</h1>
+                                    </a>
                                 </div>
-                            </div>
-                        </article>
-                    </li>
-                {% endfor %}
-            </ol>
-        </section>
+                                <div class="section__inner section__inner--readable">
+                                    <div class="article-list__meta rule--with-text">
+                                        <time class="rule__text article__meta__date" datetime="{{ post.date }}">{{ post.date | date: "%a" }}, {{ post.date | date_to_string }}</time>
+                                    </div>
+                                </div>
+                            </article>
+                        </li>
+                    {% endfor %}
+                </ol>
+            </section>
+        </div>
 
-        {% include scripts.html %}
+        {% include footer.html %}
     </body>
 </html>

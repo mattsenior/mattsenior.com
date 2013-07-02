@@ -5,7 +5,7 @@
     <body>
         {% include header.html %}
 
-        <article>
+        <article role="main" class="section--main-wrapper">
             <div class="section">
                 <div class="section__inner section__inner--mid-width">
                     <h1 class="article__title">{{ page.title }}</h1>
@@ -21,6 +21,6 @@
             </div>
         </article>
 
-        {% include scripts.html %}
+        {% include footer.html %}
     </body>
 </html>

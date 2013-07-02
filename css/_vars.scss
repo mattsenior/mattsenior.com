@@ -71,7 +71,8 @@ $colour-def-oranje: #ff7000;
 
 $base-font-colour: $colour-def-body-grey;
 $colour-link: $colour-def-oranje;
-$colour-background: $colour-def-almost-white;
+$colour-background: white;
+$colour-main-wrapper: $colour-def-almost-white;
 $colour-meta: lighten($base-font-colour, 60);
 $colour-header: $colour-def-greyblue;
 
