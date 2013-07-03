@@ -2,10 +2,20 @@
     Header
 \*------------------------------------*/
 .header {
-    padding-top:    1 * $base-spacing-unit;
-    padding-bottom: 1 * $base-spacing-unit;
+    padding-top:    0.25 * $base-spacing-unit;
+    padding-bottom: 0.25 * $base-spacing-unit;
     text-transform: lowercase;
     text-align: center;
+
+    @include respond-min-width(30em) {
+        padding-top:    0.5 * $base-spacing-unit;
+        padding-bottom: 0.5 * $base-spacing-unit;
+    }
+
+    @include respond-min-width(40em) {
+        padding-top:    1 * $base-spacing-unit;
+        padding-bottom: 1 * $base-spacing-unit;
+    }
 
     a {
         @extend %typography--reset-links;
@@ -21,10 +31,14 @@
             font-family: $base-font-family;
             font-style: normal;
             font-weight: 400;
-            @extend .beta; 
+            @include font-size($h3-size);
             display: inline;
             color: $base-font-colour;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.05em;
+
+            @include respond-min-width(40em) {
+                @include font-size($h2-size);
+            }
         }
 
         h2 {
