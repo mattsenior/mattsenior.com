@@ -26,6 +26,7 @@
     }
 
     .article-list__title-link {
+        @extend .fancy-link;
         display: block;
         padding: 0.25 * $base-spacing-unit 0;
     }

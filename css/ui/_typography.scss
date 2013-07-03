@@ -14,16 +14,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a:link, a:visited, a:hover, a:active, {
+    position: relative;
     text-decoration: none;
     color: $colour-link;
 }
 a:hover {
-    background-color: lighten($colour-link, 40%);
+    //background-color: lighten($colour-link, 40%);
+    color: $colour-def-greyblue;
 }
 a:active {
-    background-color: $colour-link;
-    color: $colour-background;
+    //background-color: $colour-link;
+    color: $colour-link;
 }
+
+.fancy-link {
+    &:link, &:visited, &:hover, &:active {
+        @include vendor(transition, top .2s ease-out, color 0.1s);
+    }
+}
+    .fancy-link:hover {
+        top: -0.1em;
+    }
+    .fancy-link:active {
+        @include vendor(transition, none);
+        color: $colour-link;
+    }
 
 %typography--feature-links {
     &:link, &:visited {
@@ -51,7 +66,7 @@ a:active {
 }
 
 .typography--meta {
-    color: lighten($base-font-colour, 30%);
+    color: lighten($base-font-colour, 20%);
     font-size: 0.9em;
 }
 
