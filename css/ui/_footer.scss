@@ -39,7 +39,6 @@
 
     .footer__face-in-a-circle-obviously {
         @include vendor(border-radius, 10em);
-        background: transparent url(http://www.gravatar.com/avatar/74838fae38c88e23f10018425ab90fb1.jpg?s=200) center center no-repeat; 
         width:  5em;
         height: 5em;
 
