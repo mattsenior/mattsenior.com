@@ -73,12 +73,12 @@ a:active {
 code {
     font-family: $font-family-monospace;
     font-size: 0.75em;
-    background-color: darken($colour-background, 2%);
+    background-color: darken($colour-background, 3%);
 }
 
 p code {
     display: inline;
     padding: 0.20em 0.4em 0.20em;
     margin: 0 0.2em;
-    border: 0.1em solid darken($colour-background, 3%);
+    border: 0.1em solid darken($colour-background, 4%);
 }
