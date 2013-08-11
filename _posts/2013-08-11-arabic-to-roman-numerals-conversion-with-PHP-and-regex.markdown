@@ -67,4 +67,4 @@ class Numeralizor
 }
 ~~~
 
-You can find the accompanying 3000-line(!) PhpSpec test on [GitHub](https://github.com/seniorio/roman-numerals).
+Just a bit of fun. You can find the accompanying 3000-line(!) PhpSpec test on [GitHub](https://github.com/seniorio/roman-numerals).
