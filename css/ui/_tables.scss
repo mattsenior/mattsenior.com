@@ -1,0 +1,12 @@
+th,
+td {
+    padding: $half-spacing-unit / 4 $half-spacing-unit / 2;
+
+    &:first-child {
+        padding-left: 0;
+    }
+
+    &:last-child {
+        padding-right: 0;
+    }
+}

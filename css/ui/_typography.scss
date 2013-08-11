@@ -76,6 +76,18 @@ code {
     background-color: darken($colour-background, 3%);
 }
 
+pre {
+    @extend .islet;
+    background-color: darken($colour-background, 3%);
+    line-height: 1.4;
+    font-size: 0.9em;
+
+    code {
+        display: block;
+    }
+}
+
+
 p code {
     display: inline;
     padding: 0.20em 0.4em 0.20em;

@@ -29,6 +29,17 @@
     color: $colour-background;
     -webkit-font-smoothing: antialiased;
 }
+.section--pull-top {
+    margin-top: -0.5 * $base-spacing-unit;
+
+    @include respond-min-width(40em) {
+        margin-top: -1.1 * $base-spacing-unit;
+    }
+
+    @include respond-min-width(60em) {
+        margin-top: -2 * $base-spacing-unit;
+    }
+}
     .section__inner {
         max-width: 60 * $base-spacing-unit;
         margin-left: auto;
@@ -54,9 +65,9 @@
         max-width: 34 * $base-spacing-unit;
     }
     .section__inner--readable {
-        max-width: 20 * $base-spacing-unit;
+        max-width: 22 * $base-spacing-unit;
 
         @include respond-min-width(28 * $base-spacing-unit) {
-            max-width: 21 * $base-spacing-unit;
+            max-width: 23 * $base-spacing-unit;
         };
     }
