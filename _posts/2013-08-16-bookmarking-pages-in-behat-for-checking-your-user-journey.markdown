@@ -74,7 +74,7 @@ class FeatureContext extends MinkContext
 }
 ```
 
-So our final scenario ended up like this:
+So our final scenario ends up like this—not an ID in sight:
 
 ```gherkin
 Scenario: Search a sub-folder for non-existent document
