@@ -3,7 +3,11 @@ layout: article
 title: "Quick tip: Behat Bookmarks"
 ---
 
-I recently encountered a [Behat](http://behat.org) test scenario for searching a folder of documents, which looks a little like this:
+‘Bookmarking’ pages in [Behat](http://behat.org) scenarios lets us check user journeys involving URLs with IDs in them, without needing to know what those IDs are.
+
+---
+
+I recently encountered a Behat test scenario for searching a folder of documents online, which looks a little like this:
 
 ```gherkin
 Scenario: Search a sub-folder for non-existent document
@@ -13,7 +17,7 @@ Scenario: Search a sub-folder for non-existent document
      Then the admin record list should be empty
 ```
 
-The user journey involves clicking into a sub-folder to view its contents, then searching through those contents. I want to assert that after submitting the search form, the user remains on the same page instead of being taken elsewhere.
+The user journey involves clicking into a sub-folder to view its contents, then searching through those contents with a search form. I want to assert that after submitting the form, the user remains on the same page instead of being taken elsewhere.
 
 Thanks to the [Mink Extension](https://github.com/Behat/MinkExtension) `MinkContext`, we can already check URLs:
 
@@ -70,7 +74,7 @@ class FeatureContext extends MinkContext
 }
 ```
 
-So our final Gherkin scenario ended up like this:
+So our final scenario ended up like this:
 
 ```gherkin
 Scenario: Search a sub-folder for non-existent document
