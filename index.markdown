@@ -1,5 +1,5 @@
 ---
 layout: home
-title: Webontwikkeling
+title: A home for Matt Senior’s technowaffle
 ---
 
