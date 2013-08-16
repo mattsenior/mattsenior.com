@@ -44,7 +44,7 @@ We use `strtr($p, 'IVX', $r)` to translate all the find-replace tokens in the ph
 
 The last step after this translation is to `explode` the space-separated string and feed the tokens into the correct parameters of `preg_replace`.
 
-~~~ php
+```php
 <?php
 
 namespace Seniorio;
@@ -65,6 +65,6 @@ class Numeralizor
         return $n;
     }
 }
-~~~
+```
 
 Just a bit of fun. You can find the accompanying 3000-line(!) PhpSpec test on [GitHub](https://github.com/seniorio/roman-numerals).

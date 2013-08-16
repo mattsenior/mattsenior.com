@@ -1,5 +1,5 @@
 _site/
-.rvmrc
+.ruby-version
 .*.swp
 .sass-cache
 .DS_Store
