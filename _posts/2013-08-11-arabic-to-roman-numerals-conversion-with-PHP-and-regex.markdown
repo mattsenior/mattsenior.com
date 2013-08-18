@@ -26,11 +26,7 @@ Phase Two:
 
 The pattern of replacements in the phases above are exactly the same if we multiply all the numbers by 10.
 
-So, for...        |   1 (`I`) |   5 (`V`) | and   10 (`X`)
-it’s the same for |  10 (`X`) |  50 (`L`) | and  100 (`C`)
-and the same for  | 100 (`C`) | 500 (`D`) | and 1000 (`M`)
-
-So a pattern emerges that applies to each of these groups of numerals: `IVX`, `XLC`, and `CDM`.
+For 1 (`I`), 5 (`V`) and 10 (`X`), it’s the same for 10 (`X`), 50 (`L`) and  100 (`C`), and the same for 100 (`C`), 500 (`D`) and 1000 (`M`).
 
 Phase 1 needs to be completed for each of these groups (`IVX`, `XLC`, `CDM`) first, then Phase 2 can be completed for each group afterwards, so that the substitutions are made in the correct order.
 
