@@ -9,7 +9,7 @@ NTP is designed to counter the effects of server clock drift, which usually occu
 
 This becomes a problem when you’re running NTP on a VM and you want to put your host machine to sleep—when you arrive back from lunch or come into work the next day, you’ll find the VM clock is many hours behind and unable to recover.
 
-To make sure NTP can **always** recover—regardless of the amount of drift—add `tinker panic 0` to a new line at the _top_ of your `ntp.conf` file (which is `/etc/ntp.conf` by default) and restart the service (`sudo service ntp restart`). The position of the line seems to make a difference, so make sure it’s the first non-comment line in the file.
+To make sure NTP can _always_ recover—regardless of the amount of drift—add `tinker panic 0` to a new line at the _top_ of your `ntp.conf` file (which is `/etc/ntp.conf` by default) and restart the service: `sudo service ntp restart`. The position of the line seems to make a difference, so make sure it’s the first non-comment line in the file.
 
 ---
 
