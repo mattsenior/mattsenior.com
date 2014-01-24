@@ -5,7 +5,7 @@ title: "Allow NTP to sync your VM’s clock after host machine sleep"
 
 At Browser we use NTP on our Linux VMs to automatically check and update the system’s date/time. This is particularly important if you’re working with tools such as the Amazon AWS SDK, which will fail (sometimes fairly quietly) if your system clock is more than 15 minutes different from Amazon’s. We install the standard NTP service on our Ubuntu machines using `sudo apt-get install ntp`.
 
-NTP is designed to counter the effects of system clock drift, which usually occurs in very small amounts. By default, the `ntpd` daemon is designed to ‘panic’ and exit if it notices the clock has slipped by an abnormally large amount (1000 seconds by default).
+NTP is designed to counter the effects of system clock drift, which usually occurs in very small amounts. By default, the `ntpd` daemon is designed to ‘panic’ and exit if it notices the clock has slipped by an abnormally large amount—‘abnormally large’ being over a default threshold of 1000 seconds.
 
 This becomes a problem when you’re running NTP on a VM and you want to put your host machine to sleep—when you arrive back from lunch or come into work the next day, you’ll find the VM clock is many hours behind and unable to recover.
 
