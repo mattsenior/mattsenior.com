@@ -7,11 +7,11 @@ I’ll start by saying I’m relatively new to the ideas of [Logic Programming](
 
 The idea of both Logic and Declarative programming paradigms is simple: your job as a developer is to write _what_ results you want your code to give you, rather than _how_ it should go about calculating those results.
 
-I’m going to use Clojure’s [core.logic](https://github.com/clojure/core.logic/wiki) library to run through some very basic examples—I won’t go into how to run the Clojure code, there are plenty of Clojure/Leiningen tutorials available—finishing with one method of solving some very basic number puzzles with our new Logic Programming skills.
+I’m going to use Clojure’s [core.logic](https://github.com/clojure/core.logic/wiki) library to run through some very basic examples—I won’t go into how to run the Clojure code—finishing by solving some very basic number puzzles with our new Logic Programming skills.
 
 ---
 
-Let’s first get hold of core.logic by updating your `project.clj`:
+With a fresh [Leiningen](http://leiningen.org/) project, let’s first get hold of core.logic by updating your `project.clj`:
 
 ```clojure
 :dependencies [[org.clojure/clojure "1.5.1"]
@@ -34,9 +34,9 @@ This is what core.logic’s syntax looks like (I recommend reading the [primer](
 )
 ```
 
-A core.logic program is written inside a call to `run*`. `[q]` is just giving a name ‘q’ to the _logic variable_ used for output.
+A core.logic program is written inside a call to `run*`. We also need to give our main _logic variable_ a name, `q` seems to be the convention. This logic variable (or _lvar_) is special: whatever value we give it later will be the output from the program.
 
-Underneath this, your _logic expressions_ will be any number of **constraints** used to narrow down our set of results.
+Underneath this, our _logic expressions_ will be any number of constraints used to narrow down our set of results.
 
 We could, for example, write a constraint that says the value of `q` must always be 10. For this we’d use core.logic’s _unify_ operator `==`
 
@@ -57,6 +57,18 @@ If we added a second constraint stating that `q` must equal 20…
 
 …our result list would be empty—no value could be found that satisfies both of our constraints (because no value can be both 10 _and_ 20).
 
+---
+
+In order to describe the logical constraints of our program, we often require more _logic variables_ than just the `q` we start with. For this, we can use core.logic’s `fresh` to create new _lvars_:
+
+```clojure
+(run* [q]
+  (fresh [a]
+    (== a 10)
+    (== q a)))
+```
+
+Here we have two constraints: firstly that `a` must equal the value 10; secondly that the value of `q` must equal the value of `a`.
 
 
 
