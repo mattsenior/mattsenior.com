@@ -42,7 +42,7 @@ We could, for example, write a constraint that says the value of `q` must always
 
 ```clojure
 (run* [q]
-  (== q 10))
+  (== q 10)) ;; -> (10)
 ```
 
 Running this will give the result `(10)`. 10 is the only possible value that can satisfy our constraint.
@@ -52,7 +52,7 @@ If we added a second constraint stating that `q` must equal 20…
 ```clojure
 (run* [q]
   (== q 10)
-  (== q 20))
+  (== q 20)) ;; -> ()
 ```
 
 …our result list would be empty—no value could be found that satisfies both of our constraints (because no value can be both 10 _and_ 20).
@@ -65,10 +65,26 @@ In order to describe the logical constraints of our program, we often require mo
 (run* [q]
   (fresh [a]
     (== a 10)
-    (== q a)))
+    (== q a))) ;; -> (10)
 ```
 
-Here we have two constraints: firstly that `a` must equal the value 10; secondly that the value of `q` must equal the value of `a`.
+Here we have two constraints: firstly that `a` must equal the value 10; secondly that the value of `q` must equal the value of `a`. The only value of `q` that can satisfy both these constraints is `10`, so again the output is a list with a single value `(10)`.
+
+---
+
+If we run the following, which _unifies_ our main lvar `q` with a fresh lvar `a`, but makes no further constraints…
+
+```clojure
+(run* [q]
+  (fresh [a]
+    (== q a))) ;; -> (_0)
+```
+
+…we’re given the strange output `_0`. This means that our lvar could take on _any_ value, and nothing more specific can be said than that.
+
+---
+
+## Solving a Newspaper Number Puzzle
 
 
 
