@@ -11,14 +11,14 @@ I’m going to use Clojure’s [core.logic](https://github.com/clojure/core.logi
 
 ---
 
-With a fresh [Leiningen](http://leiningen.org/) project, let’s first get hold of core.logic by updating your `project.clj`:
+With a fresh [Leiningen](http://leiningen.org/) project, let’s first get hold of core.logic by updating our `project.clj`:
 
 ```clojure
 :dependencies [[org.clojure/clojure "1.5.1"]
                [org.clojure/core.logic "0.8.7"]]
 ```
 
-Your `ns` will need to look something like this to pull in core.logic:
+Our `ns` will need to look something like this to pull in core.logic:
 
 ```clojure
 (ns number-puzzles.core
@@ -36,7 +36,7 @@ This is what core.logic’s syntax looks like (I recommend reading the [primer](
 
 A core.logic program is written inside a call to `run*`. We also need to give our main _logic variable_ a name, `q` seems to be the convention. This logic variable (or _lvar_) is special: whatever value we give it later will be the output from the program.
 
-Underneath this, our _logic expressions_ will be any number of constraints used to narrow down our set of results.
+Underneath this, our _logic expressions_ will be any number of constraints used to determine what our results are.
 
 We could, for example, write a constraint that says the value of `q` must always be 10. For this we’d use core.logic’s _unify_ operator `==`
 
@@ -45,7 +45,7 @@ We could, for example, write a constraint that says the value of `q` must always
   (== q 10)) ;; -> (10)
 ```
 
-Running this will give the result `(10)`. 10 is the only possible value that can satisfy our constraint.
+When this program is run, core.logic will return all values that satisfy **all** of the given constraints. Here we’ll have the result `(10)` as 10 is the only possible value that can satisfy our constraint.
 
 If we added a second constraint stating that `q` must equal 20…
 
@@ -86,15 +86,96 @@ If we run the following, which _unifies_ our main lvar `q` with a fresh lvar `a`
 
 ## Solving a Newspaper Number Puzzle
 
+I recently stumbled upon the following number puzzle in the [i](http://www.independent.co.uk/i/) newspaper, reproduced here for academic purposes!
 
+<img src="/img/number-puzzle.svg" alt="Number puzzle" class="img--center" />
+
+The empty boxes must be filled with the numbers 1–9 to satisfy the horizontal and vertical calculations; each number can only appear once; calculations should be performed left-to-right and top-to-bottom (no [BODMAS](http://en.wikipedia.org/wiki/Order_of_operations)).
+
+The puzzle is simply a set of logical constraints, so rather than thinking about how we would imperatively write an algorithm to solve it, let’s see how we can use Logic Programming to sidestep this entirely.
+
+---
+
+Our first step will be to create all the _lvars_ we’ll need, and set up the output format:
 
 ```clojure
+(run* [q]
+
+  (fresh [a0 a1 a2  ;; Top row
+          b0 b1 b2  ;; Middle row
+          c0 c1 c2] ;; Bottom row
+
+    ;; Unify q with our lvars in the output format we want
+    (== q [[a0 a1 a2]     ;; Top row
+           [b0 b1 b2]     ;; Middle row
+           [c0 c1 c2]]))) ;; Bottom row
+```
+
+Here you can see we’re unifying `q` with some nested vectors containing our _lvars_, which is how we set up the format of the results. If we run this, we get the following output:
+
+```clojure
+([[_0 _1 _2] [_3 _4 _5] [_6 _7 _8]])
+```
+
+As we’ve not set up any constraints, we just get nine of the `_0`, `_1`, etc. symbols we saw earlier.
+
+Let’s start adding the rules of the puzzle. Firstly, our values must be in the range 1-9. For this we can use core.logic’s _finite domain_ (FD) tools, which can be found under the `clojure.core.logic.fd` namespace:
+
+```clojure
+(ns logic.core
+  (:refer-clojure :exclude [==])
+  (:require [clojure.core.logic :refer :all])
+  (:require [clojure.core.logic.fd :as fd]))
+```
+
+Here’s our first constraint:
+
+```clojure
+;; State that every one of our lvars should be in the range 1-9
+(fd/in a0 a1 a2 b0 b1 b2 c0 c1 c2 (fd/interval 1 9))
+```
+
+Next, we need to ensure that each of our _lvars_ contains a different number. Core.logic’s `distinct` does the trick:
+
+```clojure
+;; State that each of our lvars should be unique
+(fd/distinct [a0 a1 a2 b0 b1 b2 c0 c1 c2])
+```
+
+Now we can go ahead and add all of the mathematical constraints. Core.logic has FD operators for this purpose, such as `fd/+`, `fd/-`, `fd/*`, etc., or we can use `fd/eq` which is a helpful macro that lets us write our FD constraints with normal Clojure operators (`+`, `-`, `*`, etc.):
+
+```clojure
+(fd/eq
+  ;; Horizontal conditions for the puzzle
+  (= (- (* a0 a1) a2) 22)
+  (= (- (* b0 b1) b2) -1)
+  (= (+ (* c0 c1) c2) 72)
+
+  ;; Vertical conditions for the puzzle
+  (= (* (+ a0 b0) c0) 25)
+  (= (- (- a1 b1) c1) -4)
+  (= (+ (* a2 b2) c2) 25)
+
+  ;; And finally, in the puzzle we are told that the top left
+  ;; number (a0) is 4.
+  (= a0 4))
+```
+
+Putting it all together:
+
+```clojure
+(ns logic.core
+  (:refer-clojure :exclude [==])
+  (:require [clojure.core.logic :refer :all])
+  (:require [clojure.core.logic.fd :as fd]))
+
 ;; Use run* to retrieve all possible solutions
 (run* [q]
 
   ;; Create some new logic vars (lvars) for us to use in our rules
-  ;; Named a0 a1 a2 for the top row, b0 b1 b2 for the second, etc.
-  (fresh [a0 a1 a2 b0 b1 b2 c0 c1 c2]
+  (fresh [a0 a1 a2  ;; Top row
+          b0 b1 b2  ;; Middle row
+          c0 c1 c2] ;; Bottom row
 
     ;; Unify q with our lvars in the output format we want
     (== q [[a0 a1 a2]
@@ -112,24 +193,30 @@ If we run the following, which _unifies_ our main lvar `q` with a fresh lvar `a`
     (fd/eq
 
       ;; Horizontal conditions for the puzzle
-      (= (+ (* a0 a1) a2) 37)
-      (= (+ (* b0 b1) b2) 38)
-      (= (+ (+ c0 c1) c2) 16)
+      (= (- (* a0 a1) a2) 22)
+      (= (- (* b0 b1) b2) -1)
+      (= (+ (* c0 c1) c2) 72)
 
       ;; Vertical conditions for the puzzle
-      (= (+ (- a0 b0) c0) 3)
-      (= (+ (- a1 b1) c1) 12)
-      (= (+ (- a2 b2) c2) 0)
+      (= (* (+ a0 b0) c0) 25)
+      (= (- (- a1 b1) c1) -4)
+      (= (+ (* a2 b2) c2) 25)
 
       ;; And finally, in the puzzle we are told that the top left
       ;; number (a0) is 4.
       (= a0 4))))
 ```
 
-The result:
+And here are our results. As you can see, all nine cells now have values, puzzle solved!
 
 ```clojure
-([[4 9 1]
-  [7 5 3]
-  [6 8 2]])
+([[4 6 2]
+  [1 7 8]
+  [5 3 9]])
 ```
+
+---
+
+For me, the next direction to take this in will be to look further into use cases for Rich Hickey’s [Datomic](http://www.datomic.com/) database. Datomic uses a Logic Programming language called [Datalog](http://en.wikipedia.org/wiki/Datalog) to query its data, and queries are written as a set of logical constraints against _lvars_ in the same way we’ve just discovered.
+
+Being able to describe the results you want and the constraints of your problem in this manner—and not worrying about the underlying implementation really is very exciting.
