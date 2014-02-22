@@ -72,7 +72,7 @@ Here we have two constraints: firstly that `a` must equal the value 10; secondly
 
 ---
 
-If we run the following, which _unifies_ our main lvar `q` with a fresh lvar `a`, but makes no further constraints…
+If we run the following, which _unifies_ our main _lvar_ `q` with a fresh _lvar_ `a`, but makes no further constraints…
 
 ```clojure
 (run* [q]
@@ -80,17 +80,17 @@ If we run the following, which _unifies_ our main lvar `q` with a fresh lvar `a`
     (== q a))) ;; -> (_0)
 ```
 
-…we’re given the strange output `_0`. This means that our lvar could take on _any_ value, and nothing more specific can be said than that.
+…we’re given the strange output `_0`. This means that our _lvar_ could take on _any_ value, and nothing more specific can be said than that.
 
 ---
 
 ## Solving a Newspaper Number Puzzle
 
-I recently stumbled upon the following number puzzle in the [i](http://www.independent.co.uk/i/) newspaper, reproduced here for academic purposes!
+Here’s a puzzle I found recently in the [i](http://www.independent.co.uk/i/) newspaper, which we’re going to solve:
 
 <img src="/img/2014-02-22-using-clojures-core-logic-to-solve-simple-number-puzzles/number-puzzle.svg" alt="Number puzzle" class="img--center" />
 
-The empty boxes must be filled with the numbers 1–9 to satisfy the horizontal and vertical calculations; each number can only appear once; calculations should be performed left-to-right and top-to-bottom (no [BODMAS](http://en.wikipedia.org/wiki/Order_of_operations)).
+The rules: the empty boxes must be filled with the numbers 1–9 to satisfy the horizontal and vertical calculations; each number can only appear once; calculations should be performed left-to-right and top-to-bottom (no [BODMAS](http://en.wikipedia.org/wiki/Order_of_operations)).
 
 The puzzle is simply a set of logical constraints, so rather than thinking about how we would imperatively write an algorithm to solve it, let’s see how we can use Logic Programming to sidestep this entirely.
 
@@ -135,14 +135,14 @@ Here’s our first constraint:
 (fd/in a0 a1 a2 b0 b1 b2 c0 c1 c2 (fd/interval 1 9))
 ```
 
-Next, we need to ensure that each of our _lvars_ contains a different number. Core.logic’s `distinct` does the trick:
+Next, we need to ensure that each of our _lvars_ contains a different number. core.logic’s `distinct` does the trick:
 
 ```clojure
 ;; State that each of our lvars should be unique
 (fd/distinct [a0 a1 a2 b0 b1 b2 c0 c1 c2])
 ```
 
-Now we can go ahead and add all of the mathematical constraints. Core.logic has FD operators for this purpose, such as `fd/+`, `fd/-`, `fd/*`, etc., or we can use `fd/eq` which is a helpful macro that lets us write our FD constraints with normal Clojure operators (`+`, `-`, `*`, etc.):
+Now we can go ahead and add all of the mathematical constraints. core.logic has FD operators for this purpose, such as `fd/+`, `fd/-`, `fd/*`, etc., or we can use `fd/eq`, which is a helpful macro that lets us write our FD constraints with normal Clojure operators (`+`, `-`, `*`, etc.):
 
 ```clojure
 (fd/eq
