@@ -88,7 +88,7 @@ If we run the following, which _unifies_ our main lvar `q` with a fresh lvar `a`
 
 I recently stumbled upon the following number puzzle in the [i](http://www.independent.co.uk/i/) newspaper, reproduced here for academic purposes!
 
-<img src="/img/number-puzzle.svg" alt="Number puzzle" class="img--center" />
+<img src="/img/2014-02-22-using-clojures-core-logic-to-solve-simple-number-puzzles/number-puzzle.svg" alt="Number puzzle" class="img--center" />
 
 The empty boxes must be filled with the numbers 1–9 to satisfy the horizontal and vertical calculations; each number can only appear once; calculations should be performed left-to-right and top-to-bottom (no [BODMAS](http://en.wikipedia.org/wiki/Order_of_operations)).
 
@@ -219,4 +219,4 @@ And here are our results. As you can see, all nine cells now have values, puzzle
 
 For me, the next direction to take this in will be to look further into use cases for Rich Hickey’s [Datomic](http://www.datomic.com/) database. Datomic uses a Logic Programming language called [Datalog](http://en.wikipedia.org/wiki/Datalog) to query its data, and queries are written as a set of logical constraints against _lvars_ in the same way we’ve just discovered.
 
-Being able to describe the results you want and the constraints of your problem in this manner—and not worrying about the underlying implementation really is very exciting.
+Being able to describe the results you want and the constraints of your problem in this manner, and not worrying about the underlying implementation, really is very exciting.
