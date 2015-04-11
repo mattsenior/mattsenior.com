@@ -84,8 +84,8 @@ pre {
 
     @include respond-min-width(28 * $base-spacing-unit) {
         padding: $base-spacing-unit;
-        margin-left: -4 * $base-spacing-unit;
-        margin-right: -4 * $base-spacing-unit;
+        margin-left: -1 * $base-spacing-unit;
+        margin-right: -1 * $base-spacing-unit;
     }
 
     code {

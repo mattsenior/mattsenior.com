@@ -1,0 +1,16 @@
+/*------------------------------------*\
+    Intro
+\*------------------------------------*/
+.intro__face-in-a-circle-obviously {
+    display: none;
+
+    @include respond-min-width(40em) {
+        display: block;
+    }
+
+    img {
+        @include vendor(border-radius, 10em);
+        width:  6.6em;
+        height: 6.6em;
+    }	
+}

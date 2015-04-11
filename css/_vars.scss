@@ -30,7 +30,7 @@ $use-nav:           false;
 $use-options:       false;
 $use-pagination:    false;
 $use-breadcrumb:    false;
-$use-media:         false;
+$use-media:         true;
 $use-marginalia:    false;
 $use-island:        true;
 $use-block-list:    true;
@@ -58,7 +58,7 @@ $use-greybox:       true;
  */
 $colour-def-almost-white: #fcfcfc;
 $colour-def-darker-grey: #333;
-$colour-def-body-grey: lighten(black, 28%);
+$colour-def-body-grey: lighten(black, 18%);
 
 $colour-def-boss-yellow: #ffe500;
 $colour-def-enraged-salmon:#DE2C42;

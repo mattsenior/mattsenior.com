@@ -34,7 +34,7 @@
             @include font-size($h3-size);
             display: inline;
             color: $base-font-colour;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.02em;
 
             @include respond-min-width(40em) {
                 @include font-size($h2-size);

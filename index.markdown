@@ -1,5 +1,5 @@
 ---
 layout: home
-title: A home for Matt Senior’s technowaffle
+title: Freelance full-stack web developer with a keen eye for detail
 ---
 
