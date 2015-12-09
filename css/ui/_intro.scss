@@ -9,8 +9,8 @@
     }
 
     img {
-        @include vendor(border-radius, 10em);
+        @include vendor(border-radius, 0.25em);
         width:  6.6em;
         height: 6.6em;
-    }	
+    }
 }

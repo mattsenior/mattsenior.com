@@ -38,7 +38,7 @@
     }
 
     .footer__face-in-a-circle-obviously {
-        @include vendor(border-radius, 10em);
+        @include vendor(border-radius, 0.25em);
         width:  5em;
         height: 5em;
 
