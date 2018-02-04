@@ -1,15 +1,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    
+
     <title>Matt Senior · {{ page.title }}</title>
 
     {% if page.url == '/index.html' %}
-        <link rel="canonical" href="http://mattsenior.com">
+        <link rel="canonical" href="https://mattsenior.com">
     {% else %}
-        <link rel="canonical" href="http://mattsenior.com{{ page.url | remove: '.html' }}">
+        <link rel="canonical" href="https://mattsenior.com{{ page.url | remove: '.html' }}">
     {% endif %}
-    
+
     <link rel="stylesheet" href="{{ site.url }}/css/style.min.css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic,700,700italic:latin|Lato:900italic:latin">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic,700,700italic:latin|Lato:900italic:latin">
 </head>
