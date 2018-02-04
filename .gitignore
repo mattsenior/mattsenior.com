@@ -1,5 +1,4 @@
 _site/
-.ruby-version
 .*.swp
 .sass-cache
 .DS_Store
