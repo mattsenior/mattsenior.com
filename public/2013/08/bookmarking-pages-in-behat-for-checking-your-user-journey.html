@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Matt Senior · Quick tip: Behat Bookmarks</title>
+
+    
+        <link rel="canonical" href="https://mattsenior.com/2013/08/bookmarking-pages-in-behat-for-checking-your-user-journey">
+    
+
+    <link rel="stylesheet" href="/css/style.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic,700,700italic:latin|Lato:900italic:latin">
+</head>
+
+
+    <body>
+        <header role="banner" class="header">
+    <div class="section__inner">
+        <a class="fancy-link header__brand" href="/">
+            <h1>MattSenior<span class="header__dot">.</span>com</h1>
+        </a>
+    </div>
+</header>
+
+
+        <article role="main" class="section--main-wrapper">
+            <div class="section">
+                <div class="section__inner section__inner--mid-width">
+                    <h1 class="article__title">Quick tip: Behat Bookmarks</h1>
+                </div>
+
+                <div class="section__inner section__inner--readable">
+                    <div class="article__meta rule--with-text">
+                        <time class="rule__text article__meta__date" datetime="2013-08-16 00:00:00 +0000">Fri, 16 Aug 2013</time>
+                    </div>
+
+                    <p>‘Bookmarking’ pages in <a href="http://behat.org">Behat</a> scenarios lets us check user journeys involving URLs with IDs in them, without needing to know what those IDs are.</p>
+
+<hr>
+
+<p>I recently encountered a Behat test scenario for searching a folder of documents online, which looks a little like this:</p>
+<div class="highlight"><pre><code class="language-gherkin" data-lang="gherkin"><span class="kn">Scenario</span><span class="p">:</span> Search a sub-folder for non-existent document
+    <span class="nf">Given </span>I am on the admin document list page
+      <span class="nf">And </span>I have clicked the <span class="s">"Title"</span> of <span class="s">"Reports"</span> in the admin document list
+     <span class="nf">When </span>I search for <span class="s">"pterodactyl"</span> in the admin
+     <span class="nf">Then </span>the admin record list should be empty
+</code></pre></div>
+<p>The user journey involves clicking into a sub-folder to view its contents, then searching through those contents with a search form. I want to assert that after submitting the form, the user remains on the same page instead of being taken elsewhere.</p>
+
+<p>Thanks to the <a href="https://github.com/Behat/MinkExtension">Mink Extension</a> <code>MinkContext</code>, we can already check URLs:</p>
+<div class="highlight"><pre><code class="language-gherkin" data-lang="gherkin"><span class="nf">Then </span>I should be on <span class="s">"/admin/documents"</span>
+</code></pre></div>
+<p>The problem, however, is that our sub-folder URL contains a numeric ID: <code>/admin/documents/{parentId}</code>, and because we use data fixtures for all test content, we don’t know what that ID is (and don’t want to).</p>
+
+<p>We could match the URL against a regular expression to check a <code>parentId</code> exists, but without knowing the ID it wouldn’t be accurate enough.</p>
+
+<p>I want a way to ‘bookmark’ the current page, regardless of its URL, then check that I’ve returned to that exact page in the future, like this:</p>
+<div class="highlight"><pre><code class="language-gherkin" data-lang="gherkin"><span class="nf">When </span>I bookmark this page as <span class="s">"Current page"</span>
+ <span class="nf">And </span>I take some action...
+<span class="nf">Then </span>I should be back on the page I bookmarked as <span class="s">"Current page"</span>
+</code></pre></div>
+<p>By storing a small array of bookmark names and URLs, this can be accommodated in our <code>FeatureContext</code>:</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Behat\MinkExtension\Context\MinkContext</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Behat\Behat\Context\Step\Then</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FeatureContext</span> <span class="k">extends</span> <span class="nx">MinkContext</span>
+<span class="p">{</span>
+    <span class="sd">/**
+     * @var array
+     */</span>
+    <span class="k">protected</span> <span class="nv">$bookmarks</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+    <span class="sd">/**
+     * @Given /^I (?:have bookmarked|bookmark) (?:this|the current) page as "(?P&lt;bookmark&gt;[^"]+)"$/
+     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">bookmarkThisPage</span><span class="p">(</span><span class="nv">$bookmark</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bookmarks</span><span class="p">[</span><span class="nv">$bookmark</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getSession</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getCurrentUrl</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**
+     * @Then /^I should be(?: back)? on the page I bookmarked as "(?P&lt;bookmark&gt;[^"]+)"$/
+     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">shouldBeOnBookmark</span><span class="p">(</span><span class="nv">$bookmark</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">array_key_exists</span><span class="p">(</span><span class="nv">$bookmark</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bookmarks</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span><span class="s1">'You haven’t yet created the bookmark: %s'</span><span class="p">,</span> <span class="nv">$bookmark</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Then</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span><span class="s1">'I should be on "%s"'</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bookmarks</span><span class="p">[</span><span class="nv">$bookmark</span><span class="p">]));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>So our final scenario ends up like this—not an ID in sight:</p>
+<div class="highlight"><pre><code class="language-gherkin" data-lang="gherkin"><span class="kn">Scenario</span><span class="p">:</span> Search a sub-folder for non-existent document
+    <span class="nf">Given </span>I am on the admin document list page
+      <span class="nf">And </span>I have clicked the <span class="s">"Title"</span> of <span class="s">"Reports"</span> in the admin document list
+      <span class="nf">And </span>I have bookmarked this page as <span class="s">"Reports contents"</span>
+     <span class="nf">When </span>I search for <span class="s">"pterodactyl"</span> in the admin
+     <span class="nf">Then </span>I should be on the page I bookmarked as <span class="s">"Reports contents"</span>
+      <span class="nf">And </span>the admin record list should be empty
+</code></pre></div>
+                </div>
+
+                
+            </div>
+        </article>
+
+        
+<footer role="contentinfo" class="footer">
+    <section class="section">
+        <div class="section__inner footer__inner">
+            <p class="footer__left">Webontwikkeling </p>
+            <a class="footer__middle" rel="me author" href="/" title="mattsenior.com home"><img class="footer__face-in-a-circle-obviously" src="https://www.gravatar.com/avatar/74838fae38c88e23f10018425ab90fb1?s=150" alt="Matt Senior’s face in a circle obviously"></a>
+            <p class="footer__right"> by <a class="footer__author" href="/" rel="me author">Matt Senior</a></p>
+        </div>
+    </section>
+</footer>
+
+
+
+    </body>
+</html>
