@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Matt Senior · Allow NTP to sync your VM’s clock after host machine sleep</title>
+
+    
+        <link rel="canonical" href="https://mattsenior.com/2014/01/allow-ntp-to-sync-your-vms-clock-after-host-machine-sleep">
+    
+
+    <link rel="stylesheet" href="/css/style.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic,700,700italic:latin|Lato:900italic:latin">
+</head>
+
+
+    <body>
+        <header role="banner" class="header">
+    <div class="section__inner">
+        <a class="fancy-link header__brand" href="/">
+            <h1>MattSenior<span class="header__dot">.</span>com</h1>
+        </a>
+    </div>
+</header>
+
+
+        <article role="main" class="section--main-wrapper">
+            <div class="section">
+                <div class="section__inner section__inner--mid-width">
+                    <h1 class="article__title">Allow NTP to sync your VM’s clock after host machine sleep</h1>
+                </div>
+
+                <div class="section__inner section__inner--readable">
+                    <div class="article__meta rule--with-text">
+                        <time class="rule__text article__meta__date" datetime="2014-01-24 00:00:00 +0000">Fri, 24 Jan 2014</time>
+                    </div>
+
+                    <p>At Browser we use NTP on our Linux VMs to automatically check and update the system’s date/time. This is particularly important if you’re working with tools such as the Amazon AWS SDK, which will fail (sometimes fairly quietly) if your system clock is more than 15 minutes different from Amazon’s. We install the standard NTP service on our Ubuntu machines using <code>sudo apt-get install ntp</code>.</p>
+
+<p>NTP is designed to counter the effects of system clock drift, which usually occurs in very small amounts. By default, the <code>ntpd</code> daemon is designed to ‘panic’ and exit if it notices the clock has slipped by an abnormally large amount—‘abnormally large’ being over a default threshold of 1000 seconds.</p>
+
+<p>This becomes a problem when you’re running NTP on a VM and you want to put your host machine to sleep—when you arrive back from lunch or come into work the next day, you’ll find the VM clock is many hours behind and unable to recover.</p>
+
+<p>To make sure NTP can <em>always</em> recover—regardless of the amount of drift—add <code>tinker panic 0</code> to a new line at the <em>top</em> of your <code>ntp.conf</code> file (which is <code>/etc/ntp.conf</code> by default) and restart the service: <code>sudo service ntp restart</code>. The position of the line seems to make a difference, so make sure it’s the first non-comment line in the file.</p>
+
+<hr>
+
+<p>As an aside, we use shell provisioning for our VMs, so we can add a line like this to our provisioning script to make sure NTP is configured with <code>tinker panic 0</code> as standard:</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'3i# Allow NTP to adjust large time differences, e.g. after host machine is woken from sleep\ntinker panic 0\n'</span> /etc/ntp.conf
+</code></pre></div>
+                </div>
+
+                
+            </div>
+        </article>
+
+        
+<footer role="contentinfo" class="footer">
+    <section class="section">
+        <div class="section__inner footer__inner">
+            <p class="footer__left">Webontwikkeling </p>
+            <a class="footer__middle" rel="me author" href="/" title="mattsenior.com home"><img class="footer__face-in-a-circle-obviously" src="https://www.gravatar.com/avatar/74838fae38c88e23f10018425ab90fb1?s=150" alt="Matt Senior’s face in a circle obviously"></a>
+            <p class="footer__right"> by <a class="footer__author" href="/" rel="me author">Matt Senior</a></p>
+        </div>
+    </section>
+</footer>
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+
+   ga('create', 'UA-405891-2', 'mattsenior.com');
+   //ga('create', 'UA-42132080-1', 'senior.io');
+   ga('send', 'pageview');
+</script>
+
+
+    </body>
+</html>
